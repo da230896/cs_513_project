@@ -13,7 +13,7 @@ create table farmers_market
     city          TEXT,
     County        TEXT,
     State         TEXT,
-    zip           TEXT,
+    zip           TEXT,c
     Season1Date   TEXT,
     Season1Time   TEXT,
     Season2Date   TEXT,
