@@ -1,0 +1,377 @@
+[
+  {
+    "op": "core/multivalued-cell-split",
+    "columnName": "Season1Date",
+    "keyColumnName": "FMID",
+    "mode": "separator",
+    "separator": " to ",
+    "regex": false,
+    "description": "Split multi-valued cells in column Season1Date"
+  },
+  {
+    "op": "core/multivalued-cell-split",
+    "columnName": "Season2Date",
+    "keyColumnName": "FMID",
+    "mode": "separator",
+    "separator": " to ",
+    "regex": false,
+    "description": "Split multi-valued cells in column Season2Date"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "zip",
+    "expression": "value.toNumber()",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column zip using expression value.toNumber()"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "Season1Date",
+    "expression": "value.toDate()",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column Season1Date using expression value.toDate()"
+  },
+  {
+    "op": "core/mass-edit",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "timerange",
+          "name": "Season1Date",
+          "expression": "value",
+          "columnName": "Season1Date",
+          "from": 1490978664000,
+          "to": 1596240000000,
+          "selectTime": false,
+          "selectNonTime": true,
+          "selectBlank": false,
+          "selectError": true
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "Season1Date",
+    "expression": "value",
+    "edits": [
+      {
+        "from": [
+          "10/25/2014 to"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "10/25/2014"
+      }
+    ],
+    "description": "Mass edit cells in column Season1Date"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "timerange",
+          "name": "Season1Date",
+          "expression": "value",
+          "columnName": "Season1Date",
+          "from": 1270080000000,
+          "to": 1596240000000,
+          "selectTime": true,
+          "selectNonTime": true,
+          "selectBlank": false,
+          "selectError": true
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "Season1Time",
+    "expression": "value.toDate()",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column Season1Time using expression value.toDate()"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "timerange",
+          "name": "Season1Date",
+          "expression": "value",
+          "columnName": "Season1Date",
+          "from": 1270080000000,
+          "to": 1596240000000,
+          "selectTime": true,
+          "selectNonTime": true,
+          "selectBlank": false,
+          "selectError": true
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "updateTime",
+    "expression": "value.toDate()",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column updateTime using expression value.toDate()"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "timerange",
+          "name": "Season1Date",
+          "expression": "value",
+          "columnName": "Season1Date",
+          "from": 1270080000000,
+          "to": 1596240000000,
+          "selectTime": true,
+          "selectNonTime": true,
+          "selectBlank": false,
+          "selectError": true
+        },
+        {
+          "type": "timerange",
+          "name": "updateTime",
+          "expression": "value",
+          "columnName": "updateTime",
+          "from": 1275401640000,
+          "to": 1,
+          "selectTime": true,
+          "selectNonTime": true,
+          "selectBlank": true,
+          "selectError": true
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "updateTime",
+    "expression": "value.toDate()",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column updateTime using expression value.toDate()"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "timerange",
+          "name": "Season1Date",
+          "expression": "value",
+          "columnName": "Season1Date",
+          "from": 1270080000000,
+          "to": 1596240000000,
+          "selectTime": true,
+          "selectNonTime": true,
+          "selectBlank": false,
+          "selectError": true
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "Facebook",
+    "expression": "jython:return value if value and len(value)>4 and value[0:4] =='http' else null",
+    "onError": "set-to-blank",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column Facebook using expression jython:return value if value and len(value)>4 and value[0:4] =='http' else null"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "timerange",
+          "name": "Season1Date",
+          "expression": "value",
+          "columnName": "Season1Date",
+          "from": 1270080000000,
+          "to": 1596240000000,
+          "selectTime": true,
+          "selectNonTime": true,
+          "selectBlank": false,
+          "selectError": true
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "Facebook",
+    "expression": "jython:return value if value and len(value)>4 and value[0:4] =='http' else null",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column Facebook using expression jython:return value if value and len(value)>4 and value[0:4] =='http' else null"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "timerange",
+          "name": "Season1Date",
+          "expression": "value",
+          "columnName": "Season1Date",
+          "from": 1270080000000,
+          "to": 1596240000000,
+          "selectTime": true,
+          "selectNonTime": true,
+          "selectBlank": false,
+          "selectError": true
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "Twitter",
+    "expression": "jython:return value if value and len(value)>4 and value[0:4] =='http' else ''",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column Twitter using expression jython:return value if value and len(value)>4 and value[0:4] =='http' else ''"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "timerange",
+          "name": "Season1Date",
+          "expression": "value",
+          "columnName": "Season1Date",
+          "from": 1270080000000,
+          "to": 1596240000000,
+          "selectTime": true,
+          "selectNonTime": true,
+          "selectBlank": false,
+          "selectError": true
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "Facebook",
+    "expression": "jython:return value if value and len(value)>4 and value[0:4] =='http' else ''",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column Facebook using expression jython:return value if value and len(value)>4 and value[0:4] =='http' else ''"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "timerange",
+          "name": "Season1Date",
+          "expression": "value",
+          "columnName": "Season1Date",
+          "from": 1270080000000,
+          "to": 1596240000000,
+          "selectTime": true,
+          "selectNonTime": true,
+          "selectBlank": false,
+          "selectError": true
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "Website",
+    "expression": "jython:return value if value and len(value)>4 and value[0:4] =='http' else ''",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column Website using expression jython:return value if value and len(value)>4 and value[0:4] =='http' else ''"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "timerange",
+          "name": "Season1Date",
+          "expression": "value",
+          "columnName": "Season1Date",
+          "from": 1270080000000,
+          "to": 1596240000000,
+          "selectTime": true,
+          "selectNonTime": true,
+          "selectBlank": false,
+          "selectError": true
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "MarketName",
+    "expression": "jython:return ''.join(ch for ch in value if ch.isalnum() or ch==' ')",
+    "onError": "set-to-blank",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column MarketName using expression jython:return ''.join(ch for ch in value if ch.isalnum() or ch==' ')"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "timerange",
+          "name": "Season1Date",
+          "expression": "value",
+          "columnName": "Season1Date",
+          "from": 1270080000000,
+          "to": 1596240000000,
+          "selectTime": true,
+          "selectNonTime": true,
+          "selectBlank": false,
+          "selectError": true
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "MarketName",
+    "expression": "value.trim()",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column MarketName using expression value.trim()"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "timerange",
+          "name": "Season1Date",
+          "expression": "value",
+          "columnName": "Season1Date",
+          "from": 1270080000000,
+          "to": 1596240000000,
+          "selectTime": true,
+          "selectNonTime": true,
+          "selectBlank": false,
+          "selectError": true
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "OtherMedia",
+    "expression": "jython:return value if value and len(value)>4 and value[0:4] =='http' else ''",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column OtherMedia using expression jython:return value if value and len(value)>4 and value[0:4] =='http' else ''"
+  }
+]
