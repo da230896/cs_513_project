@@ -2,12 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d2d76a7f-d3a1-4f47-8e22-719a63dffe76" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/CS513 Project Draft Phase 1.docx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/pythonProject.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/pythonProject.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CS513 Project Draft Phase 1_gdoc.docx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/console.sql" beforeDir="false" afterPath="$PROJECT_DIR$/console.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dataset/street_suffix_abbvr.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/farmers_data_exploration.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/farmers_data_exploration.ipynb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/farmers_market.db" beforeDir="false" afterPath="$PROJECT_DIR$/farmers_market.db" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,11 +39,12 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="database.data.extractors.current.export.id" value="Comma-separated (CSV)_id" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/dataset" />
     <property name="settings.editor.selected.configurable" value="org.jetbrains.plugins.notebooks.jupyter.connections.configuration.JupyterServerConfigurable" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/dataset" />
       <recent name="$PROJECT_DIR$" />
     </key>
   </component>
@@ -58,7 +56,8 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1656766822061</updated>
-      <workItem from="1656766823212" duration="15261000" />
+      <workItem from="1656766823212" duration="15921000" />
+      <workItem from="1657977826816" duration="20618000" />
     </task>
     <servers />
   </component>
