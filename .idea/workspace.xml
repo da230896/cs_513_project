@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d2d76a7f-d3a1-4f47-8e22-719a63dffe76" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/dataset/street_suffix_abbvr.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/initial_setup_rahul.ipynb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/farmers_data_exploration.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/farmers_data_exploration.ipynb" afterDir="false" />
     </list>
@@ -10,6 +10,13 @@
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Jupyter Notebook" />
+      </list>
+    </option>
   </component>
   <component name="FlaskConsoleOptions" custom-start-script="import sys&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;from flask.cli import ScriptInfo&#10;locals().update(ScriptInfo(create_app=None).load_app().make_shell_context())&#10;print(&quot;Python %s on %s\nApp: %s [%s]\nInstance: %s&quot; % (sys.version, sys.platform, app.import_name, app.env, app.instance_path))">
     <envs>
@@ -57,7 +64,7 @@
       <option name="presentableId" value="Default" />
       <updated>1656766822061</updated>
       <workItem from="1656766823212" duration="15921000" />
-      <workItem from="1657977826816" duration="20618000" />
+      <workItem from="1657977826816" duration="22542000" />
     </task>
     <servers />
   </component>
