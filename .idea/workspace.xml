@@ -2,7 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d2d76a7f-d3a1-4f47-8e22-719a63dffe76" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yesworkflow-0.2.1.1-jar-with-dependencies.jar" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dataset/farmers_market.csv" beforeDir="false" afterPath="$PROJECT_DIR$/dataset/input/farmers_market.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dataset/street_suffix_abbvr.csv" beforeDir="false" afterPath="$PROJECT_DIR$/dataset/input/street_suffix_abbvr.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/farmers_data_exploration.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/farmers_data_exploration.ipynb" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -53,6 +57,10 @@
       <recent name="$PROJECT_DIR$/dataset" />
       <recent name="$PROJECT_DIR$" />
     </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
+      <recent name="$PROJECT_DIR$/dataset/input" />
+    </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -63,7 +71,7 @@
       <option name="presentableId" value="Default" />
       <updated>1656766822061</updated>
       <workItem from="1656766823212" duration="15921000" />
-      <workItem from="1657977826816" duration="24630000" />
+      <workItem from="1657977826816" duration="29381000" />
     </task>
     <servers />
   </component>
