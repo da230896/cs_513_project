@@ -198,6 +198,10 @@ conn.cursor().execute(
 # In[273]:
 
 
+# @BEGIN has_social_media
+# @PARAM  fm_ds
+# @OUT fm_subset
+# @END has_social_media
 fm_ds['has_social_media']=fm_ds.apply(lambda x:  pd.isna(x.Facebook) is False or pd.isna(x.Twitter) is False or  pd.isna(x.Youtube) is False or pd.isna(x.Website) is False or pd.isna(x.OtherMedia) is False,axis=1)
 
 
@@ -232,6 +236,15 @@ fm_subset.columns
 
 def address_number_sumamry(fm_subset):
     print(fm_subset['AddressNumber'].apply(lambda x: re.search('[^\d]+',str(x)) is None).sum())
+
+
+# In[ ]:
+
+
+# @BEGIN address_number_cleaning
+# @PARAM  fm_subset
+# @OUT AddressNumber @AS farmers_address_number
+# @END address_number_cleaning
 
 
 # ## AddressNumber cleanup
@@ -277,7 +290,7 @@ address_number_sumamry(fm_subset)
 #Prepare street suffix
 # @BEGIN load_address_suffix
 # @IN address_suffx @URI file:{DATASET_LOC}/input/street_suffix_abbvr.csv
-# @OUT str_sfx
+# @OUT str_sfx @AS STREET_SUFFIX
 # @END load_address_suffix
 str_sfx=pd.read_csv(f"{DATASET_LOC}/input/street_suffix_abbvr.csv")
 str_sfx.fillna(method='ffill',inplace=True)
@@ -296,6 +309,11 @@ str_sfx={'allee': 'aly','alley': 'aly','ally': 'aly','aly': 'aly','anex': 'anx',
 # In[285]:
 
 
+# @BEGIN address_suffix_cleanup
+# @IN fm_subset
+# @IN str_sfx
+# @OUT StreetNameSuffix @AS street_name_suffix
+# @END address_suffix_cleanup
 fm_subset.StreetNameSuffix.value_counts()
 
 
@@ -319,6 +337,10 @@ fm_subset['StreetNameSuffix'].value_counts()
 # In[305]:
 
 
+# @BEGIN street_suffix_direction_cleanup
+# @IN fm_subset
+# @OUT StreetNamePreDirectional @AS street_name_direction
+# @END street_suffix_direction_cleanup
 fm_subset.StreetNamePreDirectional.value_counts()
 
 
@@ -347,6 +369,12 @@ fm_subset.StreetNamePreDirectional.value_counts()
 # In[308]:
 
 
+# @BEGIN join_address_entities
+# @IN AddressNumber
+# @IN StreetNameSuffix
+# @IN StreetNamePreDirectional
+# @OUT fm_subset_joined
+# @END street_suffix_direction_cleanup
 fm_subset['street']=fm_subset[['AddressNumber',
        'PlaceName', 'StateName', 'StreetName', 'StreetNamePreDirectional',
        'StreetNamePostDirectional', 'ZipCode', 'StreetNamePrefix',
@@ -360,12 +388,13 @@ fm_subset.drop(['AddressNumber',
        'PlaceName', 'StateName', 'StreetName', 'StreetNamePreDirectional',
        'StreetNamePostDirectional', 'ZipCode', 'StreetNamePrefix',
        'StreetNameSuffix', 'USPSBox', 'OccupancySuite'],axis=1,inplace=True)
+fm_subset_joined=fm_subset
 
 
 # In[294]:
 
 
-fm_subset.head()
+fm_subset_joined.head()
 
 
 # ## Market Name Cleanup
@@ -374,7 +403,11 @@ fm_subset.head()
 # In[316]:
 
 
-fm_subset['MarketName'] = fm_subset['MarketName'].apply(lambda x: re.sub('[^a-zA-Z\d\s:]', '', x))
+# @BEGIN market_name_cleanup_non_numeric
+# @IN fm_subset_joined
+# @OUT fm_subset_joined
+# @END market_name_cleanup_non_numeric
+fm_subset_joined['MarketName'] = fm_subset_joined['MarketName'].apply(lambda x: re.sub('[^a-zA-Z\d\s:]', '', x))
 
 
 # ### Remove Farmers Market from Name if Name is already more than 3 words
@@ -382,6 +415,10 @@ fm_subset['MarketName'] = fm_subset['MarketName'].apply(lambda x: re.sub('[^a-zA
 # In[ ]:
 
 
+# @BEGIN market_name_cleanup_dups
+# @IN fm_subset_joined
+# @OUT fm_subset_joined
+# @END market_name_cleanup_dups
 def market_name_subs(fm):
     words = fm.split('\s')
     if len(words ) >3:
@@ -390,20 +427,25 @@ def market_name_subs(fm):
         return fm
 
 
-# In[312]:
+# In[365]:
 
 
-fm_subset.columns
+fm_subset_joined['MarketName']=fm_subset_joined.MarketName.apply(market_name_subs)
 
 
 # In[331]:
 
 
-fm_subset['MarketName'].head()
+fm_subset_joined['MarketName'].head()
 
 
 # In[ ]:
 
 
-fm_subset.to_csv('dataset/fm_0716.csv')
+# @BEGIN save_farmers_data
+# @IN fm_subset_joined
+# @OUT fm_subset_joined  @AS result_csv  @URI file:{DATASET_LOC}/output/farmers_market.csv
+# @END save_farmers_data
+# @END main
+fm_subset_joined.to_csv(f'{DATASET_OUTPUT_ADDR}/fm_0716.csv')
 

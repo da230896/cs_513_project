@@ -1,0 +1,49 @@
+digraph Workflow {
+rankdir=LR
+fontname=Helvetica; fontsize=18; labelloc=t
+label=main
+subgraph cluster_workflow_box_outer { label=""; color=black; penwidth=2
+subgraph cluster_workflow_box_inner { label=""; penwidth=0
+node[shape=box style=filled fillcolor="#CCFFCC" peripheries=1 fontname=Helvetica]
+load_farmers
+filter_invalid_location
+plot_u0
+has_social_media
+address_number_cleaning
+load_address_suffix
+address_suffix_cleanup
+street_suffix_direction_cleanup
+join_address_entities
+save_farmers_data
+node[shape=box style=filled fillcolor="#CCFFCC" peripheries=2 fontname=Helvetica]
+null_check
+format_update_datetime
+market_name_cleanup_non_numeric
+market_name_cleanup_dups
+edge[fontname=Helvetica]
+filter_invalid_location -> null_check [label=fm_ds]
+filter_invalid_location -> format_update_datetime [label=fm_ds]
+filter_invalid_location -> plot_u0 [label=fm_ds]
+filter_invalid_location -> has_social_media [label=fm_ds]
+has_social_media -> address_number_cleaning [label=fm_subset]
+has_social_media -> address_suffix_cleanup [label=fm_subset]
+has_social_media -> street_suffix_direction_cleanup [label=fm_subset]
+market_name_cleanup_dups -> market_name_cleanup_non_numeric [label=fm_subset_joined]
+market_name_cleanup_dups -> market_name_cleanup_dups [label=fm_subset_joined]
+market_name_cleanup_dups -> save_farmers_data [label=fm_subset_joined]
+}}
+subgraph cluster_input_ports_group_outer { label=""; penwidth=0
+subgraph cluster_input_ports_group_inner { label=""; penwidth=0
+node[shape=circle style=filled fillcolor="#FFFFFF" peripheries=1 fontname=Helvetica width=0.2]
+farmers_market_input_port [label=""]
+address_suffx_input_port [label=""]
+}}
+subgraph cluster_output_ports_group_outer { label=""; penwidth=0
+subgraph cluster_output_ports_group_inner { label=""; penwidth=0
+node[shape=circle style=filled fillcolor="#FFFFFF" peripheries=1 fontname=Helvetica width=0.2]
+}}
+edge[fontname=Helvetica]
+farmers_market_input_port -> load_farmers [label=farmers_market]
+address_suffx_input_port -> load_address_suffix [label=address_suffx]
+edge[fontname=Helvetica]
+}
