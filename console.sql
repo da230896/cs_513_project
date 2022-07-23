@@ -1,4 +1,4 @@
-
+--AddressNumber,StreetNameSuffix, street_name_direction
 CREATE TABLE farmers_market (
 	"index" INTEGER
 	,FMID INTEGER CONSTRAINT farmers_market_pk UNIQUE
