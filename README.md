@@ -14,4 +14,4 @@
 ## Generate provenance
 
      java -jar yw.jar graph farmers_data_exploration.py >exp.gv
-     cat exp.gc | dot -Tpng -o exp.png
+     cat exp.gv | dot -Tpng -o exp.png
