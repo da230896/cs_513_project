@@ -22,15 +22,14 @@ os. getcwd()
 # In[67]:
 
 
-# @BEGIN main
+# @begin U0_U1.2_provenance @desc U0 & U1.2 data cleaning and provenance
 # @PARAM DATASET_LOC
 # @IN farmers_market @URI file:{DATASET_LOC}/input/farmers_markets.csv
-# @IN address_suffx @AS address_suffx @URI file:{DATASET_LOC}/input/street_suffix_abbvr.csv
-# @OUT result_farmers_market @URI file:{DATASET_LOC}/output/farmers_market.csv
+# @IN address_suffx @AS address_suffx @uri file:{DATASET_LOC}/input/street_suffix_abbvr.csv
+# @OUT result_farmers_market @uri file:{DATASET_LOC}/output/farmers_market.csv
 # @OUT database_export @URI file:{DATASET_LOC}/../database/farmers_market.db
-# @OUT address @URI file:{DATASET_LOC}/output/address.csv
+# @OUT cities @URI file:{DATASET_LOC}/output/cities.csv
 # @OUT states @URI file:{DATASET_LOC}/output/states.csv
-# @OUT seasons @URI file:{DATASET_LOC}/output/seasons.csv
 DATASET_LOC="/Volumes/reeth/git/cca/cs513_project/dataset"
 DATASET_INPUT_LOC=f"{DATASET_LOC}/input/farmers_market.csv"
 DATASET_OUTPUT_LOC=f"{DATASET_LOC}/output/farmers_market.csv"
@@ -39,8 +38,8 @@ DATASET_OUTPUT_ADDR_CTRY=f"{DATASET_LOC}/output/states.csv"
 DATASET_OUTPUT_SEASON=f"{DATASET_LOC}/output/seasons.csv"
 
 # @BEGIN load_farmers
-# @PARAM farmers_market
-# @IN g @AS farmers_market @URI file:{DATASET_LOC}/input/farmers_markets.csv
+# @PARAM DATASET_LOC
+# @IN g @AS farmers_market @uri file:{DATASET_LOC}/input/farmers_markets.csv
 # @OUT fm_ds
 # @END load_farmers
 fm_ds = pd.read_csv(DATASET_INPUT_LOC)
@@ -284,6 +283,7 @@ address_number_sumamry(fm_subset)
 
 #Prepare street suffix
 # @BEGIN load_address_suffix
+# @PARAM DATASET_LOC
 # @IN address_suffx @URI file:{DATASET_LOC}/input/street_suffix_abbvr.csv
 # @OUT str_sfx
 # @END load_address_suffix
@@ -449,10 +449,11 @@ fm_subset.to_csv(f'{DATASET_OUTPUT_LOC}')
 
 
 # @BEGIN export_db
+# @PARAM DATASET_LOC
 # @IN fm_subset @AS fm_subset_mkt_dedup
 # @OUT database_export @URI file:{DATASET_LOC}/../database/farmers_market.db
 # @END export_db
-# @END main
+# @END U0_U1.2_provenance
 conn = sqlite3.connect(f"{DATASET_LOC}/../database/farmers_market.db")
 fm_ds.to_sql("farmers_market", conn, if_exists="replace")
 conn.cursor().execute(

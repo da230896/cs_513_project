@@ -1,7 +1,7 @@
 digraph Workflow {
 rankdir=LR
 fontname=Helvetica; fontsize=18; labelloc=t
-label=main
+label="U0_U1.2_provenance"
 subgraph cluster_workflow_box_outer { label=""; color=black; penwidth=2
 subgraph cluster_workflow_box_inner { label=""; penwidth=0
 node[shape=box style=filled fillcolor="#CCFFCC" peripheries=1 fontname=Helvetica]
@@ -43,6 +43,7 @@ market_name_cleanup_dups -> export_db [label=fm_subset_mkt_dedup]
 subgraph cluster_input_ports_group_outer { label=""; penwidth=0
 subgraph cluster_input_ports_group_inner { label=""; penwidth=0
 node[shape=circle style=filled fillcolor="#FFFFFF" peripheries=1 fontname=Helvetica width=0.2]
+DATASET_LOC_input_port [label=""]
 farmers_market_input_port [label=""]
 address_suffx_input_port [label=""]
 }}
@@ -53,6 +54,9 @@ result_farmers_market_output_port [label=""]
 database_export_output_port [label=""]
 }}
 edge[fontname=Helvetica]
+DATASET_LOC_input_port -> load_farmers [label=DATASET_LOC]
+DATASET_LOC_input_port -> load_address_suffix [label=DATASET_LOC]
+DATASET_LOC_input_port -> export_db [label=DATASET_LOC]
 farmers_market_input_port -> load_farmers [label=farmers_market]
 address_suffx_input_port -> load_address_suffix [label=address_suffx]
 edge[fontname=Helvetica]
