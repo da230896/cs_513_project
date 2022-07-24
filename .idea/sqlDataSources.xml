@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DdlMappings">
+    <mapping uuid="c34c72a5-88bd-4c21-ae6a-05c2b568aab1" name="farmers_market_original (DDL) Mapping">
+      <data-sources db="8814b5b5-c55c-4d9f-b561-4460dbe5bb6e" ddl="21be60cf-1b27-4c0c-858d-86fe108a3731" />
+    </mapping>
+  </component>
+</project>
