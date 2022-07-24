@@ -1,62 +1,71 @@
---AddressNumber,StreetNameSuffix, street_name_direction
-CREATE TABLE farmers_market (
-	"index" INTEGER
-	,FMID INTEGER CONSTRAINT farmers_market_pk UNIQUE
-	,MarketName TEXT
-	,Website TEXT
-	,Facebook TEXT
-	,Twitter TEXT
-	,Youtube TEXT
-	,OtherMedia TEXT
-	,street TEXT
-	,Season1Date TEXT
-	,Season1Time TEXT
-	,Season2Date TEXT
-	,Season2Time TEXT
-	,Season3Date TEXT
-	,Season3Time TEXT
-	,Season4Date TEXT
-	,Season4Time TEXT
-	,LAT REAL
-	,LON REAL
-	,Location TEXT
-	,Credit INTEGER
-	,WIC INTEGER
-	,WICcash INTEGER
-	,SFMNP INTEGER
-	,SNAP INTEGER
-	,Organic INTEGER
-	,Bakedgoods INTEGER
-	,Cheese INTEGER
-	,Crafts INTEGER
-	,Flowers INTEGER
-	,Eggs INTEGER
-	,Seafood INTEGER
-	,Herbs INTEGER
-	,Vegetables INTEGER
-	,Honey INTEGER
-	,Jams INTEGER
-	,Maple INTEGER
-	,Meat INTEGER
-	,Nursery INTEGER
-	,Nuts INTEGER
-	,Plants INTEGER
-	,Poultry INTEGER
-	,Prepared INTEGER
-	,Soap INTEGER
-	,Wine INTEGER
-	,Coffee INTEGER
-	,Beans INTEGER
-	,Fruits INTEGER
-	,Grains INTEGER
-	,Juices INTEGER
-	,Mushrooms INTEGER
-	,PetFood INTEGER
-	,Tofu INTEGER
-	,WildHarvested INTEGER
-	,updateTime TIMESTAMP
-	,city_id INTEGER DEFAULT '' NOT NULL
-	);
+-- Farmers Market Main table
+create table farmers_market
+(
+    "index"       INTEGER,
+    FMID          INTEGER,
+    MarketName    TEXT,
+    Website       TEXT,
+    Facebook      TEXT,
+    Twitter       TEXT,
+    Youtube       TEXT,
+    OtherMedia    TEXT,
+    street        TEXT,
+    city          TEXT,
+    County        TEXT,
+    State         TEXT,
+    zip           TEXT,
+    Season1Date   TEXT,
+    Season1Time   TEXT,
+    Season2Date   TEXT,
+    Season2Time   TEXT,
+    Season3Date   TEXT,
+    Season3Time   TEXT,
+    Season4Date   TEXT,
+    Season4Time   TEXT,
+    x             REAL,
+    y             REAL,
+    Location      TEXT,
+    Credit        INTEGER,
+    WIC           INTEGER,
+    WICcash       INTEGER,
+    SFMNP         INTEGER,
+    SNAP          INTEGER,
+    Organic       REAL,
+    Bakedgoods    REAL,
+    Cheese        REAL,
+    Crafts        REAL,
+    Flowers       REAL,
+    Eggs          REAL,
+    Seafood       REAL,
+    Herbs         REAL,
+    Vegetables    REAL,
+    Honey         REAL,
+    Jams          REAL,
+    Maple         REAL,
+    Meat          REAL,
+    Nursery       REAL,
+    Nuts          REAL,
+    Plants        REAL,
+    Poultry       REAL,
+    Prepared      REAL,
+    Soap          REAL,
+    Trees         REAL,
+    Wine          REAL,
+    Coffee        REAL,
+    Beans         REAL,
+    Fruits        REAL,
+    Grains        REAL,
+    Juices        REAL,
+    Mushrooms     REAL,
+    PetFood       REAL,
+    Tofu          REAL,
+    WildHarvested REAL,
+    updateTime    TIMESTAMP
+);
+
+create index ix_farmers_market_index
+    on farmers_market ("index");
+
 
 CREATE TABLE City (
 	city TEXT
@@ -105,3 +114,5 @@ SET state_id = (
 
 ALTER TABLE City drop column state;
 
+--List all tables
+SELECT name FROM sqlite_schema WHERE type='table' ORDER BY name;

@@ -2,12 +2,18 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d2d76a7f-d3a1-4f47-8e22-719a63dffe76" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/sqldialects.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dataset/input/seasons/cl_farmers_s1date.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dataset/input/seasons/cl_farmers_s1time.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dataset/input/seasons/cl_farmers_s2time.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dataset/input/seasons/cl_farmers_s3time.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dataset/input/seasons/cl_farmers_s4time.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/provenance/u0_u1.2.gv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/provenance/u0_u1.2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/console_rahul.sql" beforeDir="false" afterPath="$PROJECT_DIR$/database/console_rahul.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/farmers_market.db" beforeDir="false" afterPath="$PROJECT_DIR$/database/farmers_market.db" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/farmers_data_exploration_rahul.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/src/farmers_data_exploration_rahul.ipynb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/farmers_data_exploration_rahul.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/initial_setup_rahul.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/src/initial_setup_rahul.ipynb" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,13 +53,15 @@
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="database.data.extractors.current.export.id" value="Comma-separated (CSV)_id" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/dataset/input/seasons" />
     <property name="settings.editor.selected.configurable" value="org.jetbrains.plugins.notebooks.jupyter.connections.configuration.JupyterServerConfigurable" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/dataset/input/seasons" />
       <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/dataset" />
     </key>
@@ -75,7 +83,7 @@
       <updated>1656766822061</updated>
       <workItem from="1656766823212" duration="15921000" />
       <workItem from="1657977826816" duration="39932000" />
-      <workItem from="1658628548842" duration="7561000" />
+      <workItem from="1658628548842" duration="8334000" />
     </task>
     <servers />
   </component>
