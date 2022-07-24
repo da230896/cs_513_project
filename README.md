@@ -2,16 +2,15 @@
 ## CS513: Theory & Practice of Data Cleaning
 
 
-## Setup
-
+## Setup tools
+    brew install graphviz
+    pip install nbconvert
 
 ## Notebook to Python
     
-    pip install nbconvert # if it's not installed
-    jupyter nbconvert farmers_data_exploration.ipynb --to python
-
+    jupyter nbconvert src/farmers_data_exploration_rahul.ipynb --to python
 
 ## Generate provenance
-
-     java -jar yw.jar graph farmers_data_exploration.py >exp.gv
-     cat exp.gv | dot -Tpng -o exp.png
+    
+     java -jar provenance/yw.jar graph src/farmers_data_exploration_rahul.py >provenance/provenance_u1.2.gv
+     cat provenance/provenance_u1.2.gv | dot -Tpng -o provenance/provenance_u1.2.png
