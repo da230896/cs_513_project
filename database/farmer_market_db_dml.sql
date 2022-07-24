@@ -42,3 +42,7 @@ SELECT name FROM sqlite_schema WHERE type='table' ORDER BY name;
 
 
 -- check all stats
+
+select state,count(*) from farmers_market group by state;
+
+select city,count(*) as cnt from farmers_market group by city order by cnt desc limit 10;
