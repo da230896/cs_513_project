@@ -1,15 +1,6 @@
 [
   {
     "op": "core/multivalued-cell-split",
-    "columnName": "Season1Date",
-    "keyColumnName": "FMID",
-    "mode": "separator",
-    "separator": " to ",
-    "regex": false,
-    "description": "Split multi-valued cells in column Season1Date"
-  },
-  {
-    "op": "core/multivalued-cell-split",
     "columnName": "Season2Date",
     "keyColumnName": "FMID",
     "mode": "separator",
@@ -373,5 +364,139 @@
     "repeat": false,
     "repeatCount": 10,
     "description": "Text transform on cells in column OtherMedia using expression jython:return value if value and len(value)>4 and value[0:4] =='http' else ''"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "record-based"
+    },
+    "columnName": "x",
+    "expression": "value.toNumber()",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column x using expression value.toNumber()"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "record-based"
+    },
+    "columnName": "x",
+    "expression": "value.toString()",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column x using expression value.toString()"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "text",
+          "name": "x",
+          "columnName": "x",
+          "query": "\\s*",
+          "mode": "regex",
+          "caseSensitive": false,
+          "invert": false
+        }
+      ],
+      "mode": "record-based"
+    },
+    "columnName": "x",
+    "expression": "value.toNumber()",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column x using expression value.toNumber()"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "range",
+          "name": "zip",
+          "expression": "value",
+          "columnName": "zip",
+          "from": 0,
+          "to": 130000,
+          "selectNumeric": true,
+          "selectNonNumeric": true,
+          "selectBlank": false,
+          "selectError": true
+        }
+      ],
+      "mode": "record-based"
+    },
+    "columnName": "y",
+    "expression": "value.toNumber()",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column y using expression value.toNumber()"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "range",
+          "name": "zip",
+          "expression": "value",
+          "columnName": "zip",
+          "from": 0,
+          "to": 130000,
+          "selectNumeric": true,
+          "selectNonNumeric": true,
+          "selectBlank": false,
+          "selectError": true
+        }
+      ],
+      "mode": "record-based"
+    },
+    "columnName": "street",
+    "expression": "jython:return value.replace(\"street\",\"st\")",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column street using expression jython:return value.replace(\"street\",\"st\")"
+  },
+  {
+    "op": "core/mass-edit",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "range",
+          "name": "zip",
+          "expression": "value",
+          "columnName": "zip",
+          "from": 0,
+          "to": 130000,
+          "selectNumeric": true,
+          "selectNonNumeric": true,
+          "selectBlank": false,
+          "selectError": true
+        }
+      ],
+      "mode": "record-based"
+    },
+    "columnName": "MarketName",
+    "expression": "value",
+    "edits": [
+      {
+        "from": [
+          "52 & Shadeland Avenue Farmers Market"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "52 Shadeland Avenue Farmers Market"
+      }
+    ],
+    "description": "Mass edit cells in column MarketName"
   }
 ]
