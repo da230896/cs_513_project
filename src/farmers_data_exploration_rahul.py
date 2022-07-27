@@ -51,7 +51,7 @@ fm_ds.dtypes
 # In[68]:
 
 
-# @BEGIN data_validation
+# @BEGIN data_validation @desc checking na records
 # @IN  fm_ds
 # @OUT fm_ds @AS fm_ds_validated
 # @END data_validation
@@ -102,7 +102,10 @@ def parse_date(text):
 
 # In[72]:
 
-
+# @BEGIN parse_date @desc parsing date using datetime.strptime
+# @IN  fm_ds @AS fm_ds_date_formatted
+# @OUT fm_ds @AS parse_Date
+# @END parse_date
 fm_ds['updateTime'] = fm_ds['updateTime'].apply(parse_date)
 fm_ds.updateTime.head()
 
@@ -128,7 +131,7 @@ fm_ds.isna().sum()
 
 
 # @BEGIN filter_invalid_location
-# @IN  fm_ds @AS fm_ds_date_formatted
+# @IN  fm_ds @AS parse_Date
 # @OUT fm_ds @AS fm_loc_filter
 # @END filter_invalid_location
 
@@ -188,7 +191,7 @@ map_markets
 # In[ ]:
 
 
-# @BEGIN populate_social_media
+# @BEGIN populate_social_media @desc populaitng has_social_media if has non null Facebook or Twitter else false
 # @IN  fm_ds @AS fm_loc_filter
 # @OUT fm_ds @AS ds_social_media
 # @END populate_social_media
@@ -282,7 +285,7 @@ address_number_sumamry(fm_subset)
 
 
 #Prepare street suffix
-# @BEGIN load_address_suffix
+# @BEGIN load_address_suffix 
 # @PARAM DATASET_LOC
 # @IN address_suffx @URI file:{DATASET_LOC}/input/street_suffix_abbvr.csv
 # @OUT str_sfx
