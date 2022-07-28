@@ -33,11 +33,6 @@ SET city_id = (
     WHERE city.city = farmers_market.city
 );
 
-
-CREATE TABLE State as
-select distinct State, 'USA' as country, row_number() over (partition by 1) as state_id
-from City;
-
 -- populate city id for lineage
 UPDATE City
 SET state_id = (
