@@ -1,0 +1,77 @@
+digraph Workflow {
+rankdir=TB
+fontname=Helvetica; fontsize=18; labelloc=t
+label=cleaning_time
+subgraph cluster_workflow_box_outer { label=""; color=black; penwidth=2
+subgraph cluster_workflow_box_inner { label=""; penwidth=0
+node[shape=box style=filled fillcolor="#CCFFCC" peripheries=1 fontname=Helvetica]
+load_farmers
+assert_unique_records [shape=record rankdir=LR label="{<f0> assert_unique_records |<f1> asserting the unique records}"];
+drop_na [shape=record rankdir=LR label="{<f0> drop_na |<f1> removing all the records where FMID, S_DATE, ZIP is NA}"];
+converting_date_and_zip_to_string [shape=record rankdir=LR label="{<f0> converting_date_and_zip_to_string |<f1> converting the S_TIME,ZIP to string}"];
+validate_zip_code [shape=record rankdir=LR label="{<f0> validate_zip_code |<f1> filtering time df on ZIP should be numeric and present in zip_code_db}"];
+should_contain [shape=record rankdir=LR label="{<f0> should_contain |<f1> time field in df should contain '\:'}"];
+is_aplhanumeric [shape=record rankdir=LR label="{<f0> is_aplhanumeric |<f1> time field in df should contain '\:'}"];
+split_STIME [shape=record rankdir=LR label="{<f0> split_STIME |<f1> time splitting STIME field on ' ; '}"];
+parse_time [shape=record rankdir=LR label="{<f0> parse_time |<f1> parsing time}"];
+adding_start_end [shape=record rankdir=LR label="{<f0> adding_start_end |<f1> adding _start and _end}"];
+flatten_time_simple [shape=record rankdir=LR label="{<f0> flatten_time_simple |<f1> flattening S_TIME_DICT df}"];
+saving_simple_time_df [shape=record rankdir=LR label="{<f0> saving_simple_time_df |<f1> saving simple date df}"];
+node[shape=box style="rounded,filled" fillcolor="#FFFFCC" peripheries=1 fontname=Helvetica]
+farmers_market [shape=record rankdir=LR label="{<f0> farmers_market |<f1> file\:\{DATASET_LOC\}/input/farmers_markets.csv}"];
+df
+asserted_df
+time_df
+date_zip_to_string
+validated_zip
+"time[S_TIME]_contains_to"
+"time[S_TIME]_is_alphanumeric"
+splitted_STIME
+parsed_S_TIME_DICT
+added_weekday
+flatten_time
+node[shape=box style="rounded,filled" fillcolor="#FCFCFC" peripheries=1 fontname=Helvetica]
+DATASET_LOC
+zip_code_db
+load_farmers -> df
+DATASET_LOC -> load_farmers
+farmers_market -> load_farmers
+assert_unique_records -> asserted_df
+df -> assert_unique_records
+drop_na -> time_df
+asserted_df -> drop_na
+converting_date_and_zip_to_string -> date_zip_to_string
+time_df -> converting_date_and_zip_to_string
+validate_zip_code -> validated_zip
+date_zip_to_string -> validate_zip_code
+zip_code_db -> validate_zip_code
+should_contain -> "time[S_TIME]_contains_to"
+validated_zip -> should_contain
+is_aplhanumeric -> "time[S_TIME]_is_alphanumeric"
+"time[S_TIME]_contains_to" -> is_aplhanumeric
+split_STIME -> splitted_STIME
+"time[S_TIME]_is_alphanumeric" -> split_STIME
+parse_time -> parsed_S_TIME_DICT
+splitted_STIME -> parse_time
+adding_start_end -> added_weekday
+parsed_S_TIME_DICT -> adding_start_end
+flatten_time_simple -> flatten_time
+added_weekday -> flatten_time_simple
+saving_simple_time_df -> df_to_save
+flatten_time -> saving_simple_time_df
+}}
+subgraph cluster_input_ports_group_outer { label=""; penwidth=0
+subgraph cluster_input_ports_group_inner { label=""; penwidth=0
+node[shape=circle style="rounded,filled" fillcolor="#FFFFFF" peripheries=1 fontname=Helvetica width=0.2]
+DATASET_LOC_input_port [label=""]
+zip_code_db_input_port [label=""]
+farmers_market_input_port [label=""]
+}}
+subgraph cluster_output_ports_group_outer { label=""; penwidth=0
+subgraph cluster_output_ports_group_inner { label=""; penwidth=0
+node[shape=circle style="rounded,filled" fillcolor="#FFFFFF" peripheries=1 fontname=Helvetica width=0.2]
+}}
+DATASET_LOC_input_port -> DATASET_LOC
+zip_code_db_input_port -> zip_code_db
+farmers_market_input_port -> farmers_market
+}

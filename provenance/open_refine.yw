@@ -1,0 +1,102 @@
+#@begin Linear_OR #@desc Linear OpenRefine Workflow
+#@param expression:value.toDate()
+#@param col-name:Season1Time
+#@param col-name:Season1Date
+#@param expression:value.toNumber()
+#@param expression:value.trim()
+#@param col-name:Facebook
+#@param col-name:zip
+#@param col-name:MarketName
+#@param expression:jython:return_value_if_value_and_len(value)>4_and_value[0:4]_=='http'_else_null
+#@param col-name:Twitter
+#@param col-name:OtherMedia
+#@param col-name:updateTime
+#@param col-name:Website
+#@param expression:jython:return_''.join(ch_for_ch_in_value_if_ch.isalnum()_or_ch=='_')
+#@param expression:jython:return_value_if_value_and_len(value)>4_and_value[0:4]_=='http'_else_''
+#@in table0
+#@out table16
+#@begin core/text-transform0#@desc Text transform on cells in column zip using expression value.toNumber()
+#@param col-name:zip
+#@param expression:value.toNumber()
+#@in table0
+#@out table1
+#@end core/text-transform0
+#@begin core/text-transform1#@desc Text transform on cells in column Season1Date using expression value.toDate()
+#@param col-name:Season1Date
+#@param expression:value.toDate()
+#@in table1
+#@out table2
+#@end core/text-transform1
+#@begin core/mass-edit0#@desc Mass edit cells in column Season1Date
+#@param col-name:Season1Date
+#@in table2
+#@out table3
+#@end core/mass-edit0
+#@begin core/text-transform2#@desc Text transform on cells in column Season1Time using expression value.toDate()
+#@param col-name:Season1Time
+#@param expression:value.toDate()
+#@in table3
+#@out table4
+#@end core/text-transform2
+#@begin core/text-transform3#@desc Text transform on cells in column updateTime using expression value.toDate()
+#@param col-name:updateTime
+#@param expression:value.toDate()
+#@in table4
+#@out table5
+#@end core/text-transform3
+#@begin core/text-transform4#@desc Text transform on cells in column updateTime using expression value.toDate()
+#@param col-name:updateTime
+#@param expression:value.toDate()
+#@in table5
+#@out table6
+#@end core/text-transform4
+#@begin core/text-transform5#@desc Text transform on cells in column Facebook using expression jython:return value if value and len(value)>4 and value[0:4] =='http' else null
+#@param col-name:Facebook
+#@param expression:jython:return_value_if_value_and_len(value)>4_and_value[0:4]_=='http'_else_null
+#@in table6
+#@out table7
+#@end core/text-transform5
+#@begin core/text-transform6#@desc Text transform on cells in column Facebook using expression jython:return value if value and len(value)>4 and value[0:4] =='http' else null
+#@param col-name:Facebook
+#@param expression:jython:return_value_if_value_and_len(value)>4_and_value[0:4]_=='http'_else_null
+#@in table7
+#@out table8
+#@end core/text-transform6
+#@begin core/text-transform7#@desc Text transform on cells in column Twitter using expression jython:return value if value and len(value)>4 and value[0:4] =='http' else ''
+#@param col-name:Twitter
+#@param expression:jython:return_value_if_value_and_len(value)>4_and_value[0:4]_=='http'_else_''
+#@in table8
+#@out table9
+#@end core/text-transform7
+#@begin core/text-transform8#@desc Text transform on cells in column Facebook using expression jython:return value if value and len(value)>4 and value[0:4] =='http' else ''
+#@param col-name:Facebook
+#@param expression:jython:return_value_if_value_and_len(value)>4_and_value[0:4]_=='http'_else_''
+#@in table9
+#@out table10
+#@end core/text-transform8
+#@begin core/text-transform9#@desc Text transform on cells in column Website using expression jython:return value if value and len(value)>4 and value[0:4] =='http' else ''
+#@param col-name:Website
+#@param expression:jython:return_value_if_value_and_len(value)>4_and_value[0:4]_=='http'_else_''
+#@in table10
+#@out table11
+#@end core/text-transform9
+#@begin core/text-transform10#@desc Text transform on cells in column MarketName using expression jython:return ''.join(ch for ch in value if ch.isalnum() or ch==' ')
+#@param col-name:MarketName
+#@param expression:jython:return_''.join(ch_for_ch_in_value_if_ch.isalnum()_or_ch=='_')
+#@in table11
+#@out table12
+#@end core/text-transform10
+#@begin core/text-transform11#@desc Text transform on cells in column MarketName using expression value.trim()
+#@param col-name:MarketName
+#@param expression:value.trim()
+#@in table12
+#@out table13
+#@end core/text-transform11
+#@begin core/text-transform12#@desc Text transform on cells in column OtherMedia using expression jython:return value if value and len(value)>4 and value[0:4] =='http' else ''
+#@param col-name:OtherMedia
+#@param expression:jython:return_value_if_value_and_len(value)>4_and_value[0:4]_=='http'_else_''
+#@in table13
+#@out table14
+#@end core/text-transform12
+#@end Linear_OR
