@@ -18,11 +18,11 @@
 # @END cleaning_date_time
 
 
-# @BEGIN cleaning_farmers_data @desc Rename me
+# @BEGIN address_geo_cleaning @desc Address Geo cleaning
 # @IN openrefined_data
 # @OUT database_export @URI file:{DATASET_LOC}/../database/farmers_market.db
 # @OUT fm_subset_joined  @AS result_farmers_market  @URI file:{DATASET_LOC}/output/farmers_market.csv
-# @END cleaning_farmers_data
+# @END address_geo_cleaning
 
 
 # @BEGIN Visualize_tableau @desc Rename me

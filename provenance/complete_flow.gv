@@ -17,7 +17,7 @@ node[shape=box style=filled fillcolor="#CCFFCC" peripheries=1 fontname=Helvetica
 /* Nodes representing atomic programs in workflow */
 load_farmers [shape=record rankdir=LR label="{<f0> load_farmers |<f1> load farmers to Openrefine}"];
 cleaning_date_time [shape=record rankdir=LR label="{<f0> cleaning_date_time |<f1> Look at the workflow separately attached in appendix of the report}"];
-cleaning_farmers_data [shape=record rankdir=LR label="{<f0> cleaning_farmers_data |<f1> Rename me}"];
+address_geo_cleaning [shape=record rankdir=LR label="{<f0> address_geo_cleaning |<f1> Address Geo cleaning}"];
 Visualize_tableau [shape=record rankdir=LR label="{<f0> Visualize_tableau |<f1> Rename me}"];
 
 /* Style for nodes representing non-parameter data channels in workflow */
@@ -45,9 +45,9 @@ cleaning_date_time -> cleaned_simple_date
 cleaning_date_time -> cleaned_complex_date
 cleaning_date_time -> cleaned_time
 openrefined_data -> cleaning_date_time
-cleaning_farmers_data -> database_export
-cleaning_farmers_data -> result_farmers_market
-openrefined_data -> cleaning_farmers_data
+address_geo_cleaning -> database_export
+address_geo_cleaning -> result_farmers_market
+openrefined_data -> address_geo_cleaning
 result_farmers_market -> Visualize_tableau
 cleaned_simple_date -> Visualize_tableau
 cleaned_complex_date -> Visualize_tableau
