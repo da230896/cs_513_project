@@ -1,0 +1,39 @@
+# @begin farmer_data_cleaning @desc Summary of data cleaning steps for farmers market
+# @IN farmers_market @URI file:{DATASET_LOC}/input/farmers_markets.csv
+# @OUT database_export @URI file:{DATASET_LOC}/../database/farmers_market.db
+
+# @BEGIN load_farmers @desc load farmers to Openrefine
+# @PARAM DATASET_LOC
+# @IN g @AS farmers_market @uri file:{DATASET_LOC}/input/farmers_markets.csv
+# @OUT openrefined_data
+# @END load_farmers
+
+
+
+# @BEGIN cleaning_date_time @desc Look at the workflow separately attached in appendix of the report
+# @IN openrefined_data
+# @OUT cleaned_simple_date
+# @OUT cleaned_complex_date
+# @OUT cleaned_time
+# @END cleaning_date_time
+
+
+# @BEGIN cleaning_farmers_data @desc Rename me
+# @IN openrefined_data
+# @OUT database_export @URI file:{DATASET_LOC}/../database/farmers_market.db
+# @OUT fm_subset_joined  @AS result_farmers_market  @URI file:{DATASET_LOC}/output/farmers_market.csv
+# @END cleaning_farmers_data
+
+
+# @BEGIN Visualize_tableau @desc Rename me
+# @IN result_farmers_market
+# @IN cleaned_simple_date
+# @IN cleaned_complex_date
+# @IN cleaned_time
+
+# @END Visualize_tableau
+
+
+
+
+# @end farmer_data_cleaning
