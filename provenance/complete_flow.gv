@@ -18,7 +18,7 @@ node[shape=box style=filled fillcolor="#CCFFCC" peripheries=1 fontname=Helvetica
 load_farmers [shape=record rankdir=LR label="{<f0> load_farmers |<f1> load farmers to Openrefine}"];
 cleaning_date_time [shape=record rankdir=LR label="{<f0> cleaning_date_time |<f1> Look at the workflow separately attached in appendix of the report}"];
 address_geo_cleaning [shape=record rankdir=LR label="{<f0> address_geo_cleaning |<f1> Address Geo cleaning}"];
-Visualize_tableau [shape=record rankdir=LR label="{<f0> Visualize_tableau |<f1> Rename me}"];
+Visualize_tableau [shape=record rankdir=LR label="{<f0> Visualize_tableau |<f1> generating data dashboards}"];
 
 /* Style for nodes representing non-parameter data channels in workflow */
 node[shape=box style="rounded,filled" fillcolor="#FFFFCC" peripheries=1 fontname=Helvetica]

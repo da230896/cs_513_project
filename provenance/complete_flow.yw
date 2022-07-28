@@ -25,7 +25,7 @@
 # @END address_geo_cleaning
 
 
-# @BEGIN Visualize_tableau @desc Rename me
+# @BEGIN Visualize_tableau @desc generating data dashboards
 # @IN result_farmers_market
 # @IN cleaned_simple_date
 # @IN cleaned_complex_date
