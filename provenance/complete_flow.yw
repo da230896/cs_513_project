@@ -20,10 +20,17 @@
 
 # @BEGIN address_geo_cleaning @desc Address Geo cleaning
 # @IN openrefined_data
-# @OUT database_export @URI file:{DATASET_LOC}/../database/farmers_market.db
-# @OUT fm_subset_joined  @AS result_farmers_market  @URI file:{DATASET_LOC}/output/farmers_market.csv
+# @OUT fm_subset_joined  @AS result_farmers_market
 # @END address_geo_cleaning
 
+# @BEGIN export_db
+# @PARAM DATASET_LOC
+# @IN cleaned_simple_date @AS cleaned_simple_date
+# @IN cleaned_complex_date @AS cleaned_complex_date
+# @IN cleaned_time @AS cleaned_time
+# @IN result_farmers_market @AS result_farmers_market
+# @OUT database_export @URI file:{DATASET_LOC}/../database/farmers_market.db
+# @END export_db
 
 # @BEGIN Visualize_tableau @desc generating data dashboards
 # @IN result_farmers_market

@@ -1,0 +1,81 @@
+
+# @begin cleaning_time @desc cleaning time
+# @PARAM DATASET_LOC
+# @PARAM zip_code_db
+# @IN farmers_market @URI file:{DATASET_LOC}/input/farmers_markets.csv
+# @OUT database_export @URI file:{DATASET_LOC}/../database/farmers_market.db
+# @OUT cleaned_time
+
+# @BEGIN load_farmers
+# @PARAM DATASET_LOC
+# @IN g @AS farmers_market @uri file:{DATASET_LOC}/input/farmers_markets.csv
+# @OUT df
+# @END load_farmers
+
+# @BEGIN assert_unique_records @desc asserting the unique records
+# @IN df
+# @OUT df @as asserted_df
+# @END assert_unique_records
+
+# @BEGIN drop_na @desc removing all the records where FMID, S_DATE, ZIP is NA
+# @IN df @as asserted_df
+# @OUT df @as time_df
+# @END drop_na
+
+
+# @BEGIN converting_date_and_zip_to_string @desc converting the S_TIME,ZIP to string
+# @IN df @as time_df
+# @OUT time_df @as date_zip_to_string
+# @END converting_date_and_zip_to_string
+
+# @BEGIN validate_zip_code @desc filtering time df on ZIP should be numeric and present in zip_code_db
+# @IN  time_df @as date_zip_to_string
+# @PARAM zip_code_db
+# @OUT time_df @as validated_zip
+# @END validate_zip_code
+
+# @BEGIN should_contain @desc time field in df should contain ':'
+# @IN time_df @as validated_zip
+# @OUT time_df @as time[S_TIME]_contains_to
+# @END should_contain
+
+
+# @BEGIN is_aplhanumeric @desc time field in df should contain ':'
+# @IN time_df @as time[S_TIME]_contains_to
+# @OUT time_df @as time[S_TIME]_is_alphanumeric
+# @END is_aplhanumeric
+
+# @BEGIN split_STIME @desc time splitting STIME field on ' ; '
+# @IN time_df @as time[S_TIME]_is_alphanumeric
+# @OUT time_df @as splitted_STIME
+# @END split_STIME
+
+# @BEGIN parse_time @desc parsing time 
+# @IN time_df @as splitted_STIME
+# @OUT time_df @as parsed_S_TIME_DICT
+# @END parse_time
+
+
+# @BEGIN adding_start_end @desc adding _start and _end 
+# @IN time_df @as parsed_S_TIME_DICT
+# @OUT time_df @as added_weekday
+# @END adding_start_end
+
+# @BEGIN flatten_time_simple @desc flattening S_TIME_DICT df
+# @IN time_df @As added_weekday
+# @OUT time_df @As flatten_time
+# @END flatten_time_simple
+
+# @BEGIN saving_simple_time_df @desc saving simple date df 
+# @IN time_df @As flatten_time
+# @OUT time_df @as df_to_save
+# @END saving_simple_time_df
+
+# @BEGIN export_db
+# @PARAM DATASET_LOC
+# @IN df_to_save @AS df_to_save
+# @OUT database_export @URI file:{DATASET_LOC}/../database/farmers_market.db
+# @END export_db
+
+
+# @END cleaning_time

@@ -22,11 +22,10 @@ os. getcwd()
 # In[67]:
 
 
-# @begin U0_U1.2_provenance @desc U0 & U1.2 data cleaning and provenance
+# @begin address_geo_cleaning @desc address geo data cleaning and provenance
 # @PARAM DATASET_LOC
 # @IN farmers_market @URI file:{DATASET_LOC}/input/farmers_markets.csv
 # @IN address_suffx @AS address_suffx @uri file:{DATASET_LOC}/input/street_suffix_abbvr.csv
-# @OUT result_farmers_market @uri file:{DATASET_LOC}/output/farmers_market.csv
 # @OUT database_export @URI file:{DATASET_LOC}/../database/farmers_market.db
 # @OUT cities @URI file:{DATASET_LOC}/output/cities.csv
 # @OUT states @URI file:{DATASET_LOC}/output/states.csv
@@ -437,10 +436,7 @@ fm_subset['MarketName'].head()
 # In[95]:
 
 
-# @BEGIN save_farmers_data
-# @IN fm_subset @AS fm_subset_mkt_dedup
-# @OUT fm_subset_joined  @AS result_farmers_market  @URI file:{DATASET_LOC}/output/farmers_market.csv
-# @END save_farmers_data
+
 fm_subset.to_csv(f'{DATASET_OUTPUT_LOC}')
 
 
@@ -454,7 +450,7 @@ fm_subset.to_csv(f'{DATASET_OUTPUT_LOC}')
 # @IN fm_subset @AS fm_subset_mkt_dedup
 # @OUT database_export @URI file:{DATASET_LOC}/../database/farmers_market.db
 # @END export_db
-# @END U0_U1.2_provenance
+# @END address_geo_cleaning
 conn = sqlite3.connect(f"{DATASET_LOC}/../database/farmers_market.db")
 fm_ds.to_sql("farmers_market", conn, if_exists="replace")
 conn.cursor().execute(

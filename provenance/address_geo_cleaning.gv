@@ -5,7 +5,7 @@ rankdir=TB
 
 /* Title for graph */
 fontname=Helvetica; fontsize=18; labelloc=t
-label="U0_U1.2_provenance"
+label=address_geo_cleaning
 
 /* Start of double cluster for drawing box around nodes in workflow */
 subgraph cluster_workflow_box_outer { label=""; color=black; penwidth=2
@@ -29,14 +29,12 @@ street_suffix_direction_cleanup
 join_address_entities
 market_name_cleanup_non_numeric
 market_name_cleanup_dups
-save_farmers_data
 export_db
 
 /* Style for nodes representing non-parameter data channels in workflow */
 node[shape=box style="rounded,filled" fillcolor="#FFFFCC" peripheries=1 fontname=Helvetica]
 
 /* Nodes for non-parameter data channels in workflow */
-result_farmers_market [shape=record rankdir=LR label="{<f0> result_farmers_market |<f1> file\:\{DATASET_LOC\}/output/farmers_market.csv}"];
 database_export [shape=record rankdir=LR label="{<f0> database_export |<f1> file\:\{DATASET_LOC\}/../database/farmers_market.db}"];
 farmers_market [shape=record rankdir=LR label="{<f0> farmers_market |<f1> file\:\{DATASET_LOC\}/input/farmers_markets.csv}"];
 fm_ds
@@ -94,8 +92,6 @@ market_name_cleanup_non_numeric -> fm_subset_mkt
 fm_subset_address_joined -> market_name_cleanup_non_numeric
 market_name_cleanup_dups -> fm_subset_mkt_dedup
 fm_subset_mkt -> market_name_cleanup_dups
-save_farmers_data -> result_farmers_market
-fm_subset_mkt_dedup -> save_farmers_data
 export_db -> database_export
 DATASET_LOC -> export_db
 fm_subset_mkt_dedup -> export_db
