@@ -1,0 +1,101 @@
+# @begin address_geo_cleaning @desc address geo data cleaning and provenance
+# @PARAM DATASET_LOC
+# @IN farmers_market @URI file:{DATASET_LOC}/input/farmers_markets.csv
+# @IN address_suffx @AS address_suffx @uri file:{DATASET_LOC}/input/street_suffix_abbvr.csv
+# @OUT database_export @URI file:{DATASET_LOC}/../database/farmers_market.db
+# @OUT cities @URI file:{DATASET_LOC}/output/cities.csv
+# @OUT states @URI file:{DATASET_LOC}/output/states.csv
+
+
+# @BEGIN load_farmers
+# @PARAM DATASET_LOC
+# @IN g @AS farmers_market @uri file:{DATASET_LOC}/input/farmers_markets.csv
+# @OUT fm_ds
+# @END load_farmers
+
+# @BEGIN data_validation
+# @IN  fm_ds
+# @OUT fm_ds @AS fm_ds_validated
+# @END data_validation
+
+
+# @BEGIN format_update_datetime
+# @IN  fm_ds @AS fm_ds_validated
+# @OUT fm_ds @AS fm_ds_date_formatted
+# @END format_update_datetime
+
+# @BEGIN filter_invalid_location
+# @IN  fm_ds @AS fm_ds_date_formatted
+# @OUT fm_ds @AS fm_loc_filter
+# @END filter_invalid_location
+
+
+
+# @BEGIN plot_u0
+# @IN  fm_ds @AS fm_loc_filter
+# @OUT u0_farmers_market_plot
+# @END plot_u0
+# Create a map of U.S. farmers markets using latitude and longitude values
+
+
+# @BEGIN populate_social_media
+# @IN  fm_ds @AS fm_loc_filter
+# @OUT fm_ds @AS ds_social_media
+# @END populate_social_media
+
+
+# @BEGIN address_cleaning_fields_split
+# @IN  fm_ds @AS ds_social_media
+# @OUT fm_subset @AS fm_ds_splits
+# @END address_cleaning_fields_split
+
+
+# @BEGIN address_number_cleaning
+# @IN  fm_subset @AS fm_ds_splits
+# @OUT fm_subset @AS farmers_address_number
+# @END address_number_cleaning
+
+
+# @BEGIN load_address_suffix
+# @PARAM DATASET_LOC
+# @IN address_suffx @URI file:{DATASET_LOC}/input/street_suffix_abbvr.csv
+# @OUT str_sfx
+# @END load_address_suffix
+
+# @BEGIN address_suffix_cleanup
+# @IN fm_subset @AS fm_ds_splits
+# @IN str_sfx
+# @OUT fm_subset @AS street_name_suffix
+# @END address_suffix_cleanup
+
+# @BEGIN street_suffix_direction_cleanup
+# @IN fm_subset @AS fm_ds_splits
+# @OUT fm_subset @AS street_name_direction
+# @END street_suffix_direction_cleanup
+
+
+# @BEGIN join_address_entities
+# @IN  fm_subset @AS farmers_address_number
+# @IN  fm_subset @AS street_name_suffix
+# @IN  fm_subset @AS street_name_direction
+# @OUT fm_subset @AS fm_subset_address_joined
+# @END street_suffix_direction_cleanup
+
+
+# @BEGIN market_name_cleanup_non_numeric
+# @IN fm_subset @AS fm_subset_address_joined
+# @OUT fm_subset @AS fm_subset_mkt
+# @END market_name_cleanup_non_numeric
+
+# @BEGIN market_name_cleanup_dups
+# @IN fm_subset @AS fm_subset_mkt
+# @OUT fm_subset @AS fm_subset_mkt_dedup
+# @END market_name_cleanup_dups
+
+
+# @BEGIN export_db
+# @PARAM DATASET_LOC
+# @IN fm_subset @AS fm_subset_mkt_dedup
+# @OUT database_export @URI file:{DATASET_LOC}/../database/farmers_market.db
+# @END export_db
+# @END address_geo_cleaning

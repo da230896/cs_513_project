@@ -1,0 +1,129 @@
+
+
+# @begin cleaning_date @desc cleaning date
+# @PARAM DATASET_LOC
+# @PARAM zip_code_db
+# @IN farmers_market @URI file:{DATASET_LOC}/input/farmers_markets.csv
+# @OUT database_export @URI file:{DATASET_LOC}/../database/farmers_market.db
+
+# @BEGIN load_farmers
+# @PARAM DATASET_LOC
+# @IN g @AS farmers_market @uri file:{DATASET_LOC}/input/farmers_markets.csv
+# @OUT df
+# @END load_farmers
+
+# @BEGIN drop_na @desc removing all the records where FMID, S_DATE, ZIP is NA
+# @IN df
+# @OUT date
+# @END drop_na
+
+
+# @BEGIN converting_date_and_zip_to_string @desc converting the S_DATE,ZIP to string
+# @IN date
+# @OUT date @as date_zip_to_string
+# @END converting_date_and_zip_to_string
+
+# @BEGIN validate_zip_code @desc filtering date df on ZIP should be numeric and present in zip_code_db
+# @IN  date @as date_zip_to_string
+# @PARAM zip_code_db
+# @OUT date @as validated_zip
+# @END validate_zip_code
+
+# @BEGIN should_contain_to @desc date field in df should contain ' to '
+# @IN date @as validated_zip
+# @OUT date @as date[S_DATE]_contains_to
+# @END should_contain_to
+
+
+# @BEGIN date_should_contain_numeric @desc filtering date df on date field should contain numeric data
+# @IN date @As date[S_DATE]_contains_to
+# @OUT date @As cleaned_date
+# @END date_should_contain_numeric
+
+
+# @BEGIN extract_simple_date @desc splitting date df on  ../../YYYY or ../../YY as date_simple df
+# @IN date @As cleaned_date
+# @OUT date_simple
+# @END extract_simple_date
+
+
+# @BEGIN extract_complex_date @desc splitting date df not of  ../../YYYY or ../../YY as date_simple df  
+# @IN date @As cleaned_date
+# @OUT date_complex
+# @END extract_complex_date
+
+
+# @BEGIN spliting_date_on_to @desc splitting S_DATE_LIST field on ' to ' 
+# @IN date_simple
+# @OUT date_simple @AS date_simple_splitted_on_to
+# @END spliting_date_on_to
+
+
+# @BEGIN parsing_date @desc Given a simple string ../../.... to ../../.... parse and give the list
+# @IN date_simple @AS date_simple_splitted_on_to
+# @OUT date_simple @As parsed_date
+# @END parsing_date
+
+
+# @BEGIN filtering_date @desc filtering date_simple df on S_DATE_LIST where length is 2 signifies, it contains from and to date
+# @IN date_simple @AS parsed_date
+# @IN date_simple
+# @OUT date_simple @AS filtered_date
+# @END filtering_date
+
+
+# @BEGIN flatten_date_simple @desc flattening date_simple df
+# @IN date_simple @As filtered_date
+# @OUT date_simple @As cleaned_date_simple
+# @END flatten_date_simple
+# flattening
+
+# @BEGIN saving_simple_date_df @desc saving simple date df 
+# @IN date_simple @As cleaned_date_simple
+# @OUT cleaned_simple_date
+# @END saving_simple_date_df
+
+
+# @BEGIN cleaning_date_without_year @desc cleaning date without year 
+# @IN date_complex 
+# @OUT date_complex @AS date_complex_without_year
+# @END cleaning_date_without_year
+
+
+# @BEGIN filtering_FMID_date_without_year @desc filtering FMID fields which does not have complex date format
+# @IN date_complex 
+# @IN date_complex @As date_complex_without_year
+# @OUT date_complex @AS date_complex_with_year
+# @END filtering_FMID_date_without_year
+
+# @BEGIN parse_complex_date @desc  Given a complex dates like '12 June 2012 to 13 July 2012' parse them and return the list of dates
+# @IN date_complex @AS date_complex_with_year
+# @OUT date_complex @As parsed_date_complex_with_year
+# @END parse_complex_date
+
+# @BEGIN filtering_complex_date @desc filtering
+# @IN date_complex @AS parsed_date_complex_with_year
+# @OUT date_complex @As filtered_date_complex_with_year
+# @END filtering_complex_date
+
+# @BEGIN flatten_date_complex @desc flattening date_simple df
+# @IN date_complex @As filtered_date_complex_with_year
+# @OUT date_complex @As flattened_parsed_date_complex_with_year1
+# @END flatten_date_complex
+
+
+# @BEGIN saving_complex_date_df @desc saving simple date df 
+# @IN date_complex @As flattened_parsed_date_complex_with_year1
+# @OUT cleaned_complex_date
+# @END saving_complex_date_df
+
+
+# @BEGIN export_db
+# @PARAM DATASET_LOC
+# @IN cleaned_complex_date @AS cleaned_complex_date
+# @IN cleaned_simple_date @AS cleaned_simple_date
+# @OUT database_export @URI file:{DATASET_LOC}/../database/farmers_market.db
+# @END export_db
+
+
+# @END cleaning_date

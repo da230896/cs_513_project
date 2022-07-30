@@ -1,10 +1,20 @@
+
+/* Start of top-level graph */
 digraph Workflow {
 rankdir=TB
+
+/* Title for graph */
 fontname=Helvetica; fontsize=18; labelloc=t
 label=cleaning_time
+
+/* Start of double cluster for drawing box around nodes in workflow */
 subgraph cluster_workflow_box_outer { label=""; color=black; penwidth=2
 subgraph cluster_workflow_box_inner { label=""; penwidth=0
+
+/* Style for nodes representing atomic programs in workflow */
 node[shape=box style=filled fillcolor="#CCFFCC" peripheries=1 fontname=Helvetica]
+
+/* Nodes representing atomic programs in workflow */
 load_farmers
 assert_unique_records [shape=record rankdir=LR label="{<f0> assert_unique_records |<f1> asserting the unique records}"];
 drop_na [shape=record rankdir=LR label="{<f0> drop_na |<f1> removing all the records where FMID, S_DATE, ZIP is NA}"];
@@ -17,7 +27,13 @@ parse_time [shape=record rankdir=LR label="{<f0> parse_time |<f1> parsing time}"
 adding_start_end [shape=record rankdir=LR label="{<f0> adding_start_end |<f1> adding _start and _end}"];
 flatten_time_simple [shape=record rankdir=LR label="{<f0> flatten_time_simple |<f1> flattening S_TIME_DICT df}"];
 saving_simple_time_df [shape=record rankdir=LR label="{<f0> saving_simple_time_df |<f1> saving simple date df}"];
+export_db
+
+/* Style for nodes representing non-parameter data channels in workflow */
 node[shape=box style="rounded,filled" fillcolor="#FFFFCC" peripheries=1 fontname=Helvetica]
+
+/* Nodes for non-parameter data channels in workflow */
+database_export [shape=record rankdir=LR label="{<f0> database_export |<f1> file\:\{DATASET_LOC\}/../database/farmers_market.db}"];
 farmers_market [shape=record rankdir=LR label="{<f0> farmers_market |<f1> file\:\{DATASET_LOC\}/input/farmers_markets.csv}"];
 df
 asserted_df
@@ -30,9 +46,16 @@ splitted_STIME
 parsed_S_TIME_DICT
 added_weekday
 flatten_time
+df_to_save
+
+/* Style for nodes representing parameter channels in workflow */
 node[shape=box style="rounded,filled" fillcolor="#FCFCFC" peripheries=1 fontname=Helvetica]
+
+/* Nodes representing parameter channels in workflow */
 DATASET_LOC
 zip_code_db
+
+/* Edges representing connections between programs and channels */
 load_farmers -> df
 DATASET_LOC -> load_farmers
 farmers_market -> load_farmers
@@ -59,19 +82,12 @@ flatten_time_simple -> flatten_time
 added_weekday -> flatten_time_simple
 saving_simple_time_df -> df_to_save
 flatten_time -> saving_simple_time_df
+export_db -> database_export
+DATASET_LOC -> export_db
+df_to_save -> export_db
+
+/* End of double cluster for drawing box around nodes in workflow */
 }}
-subgraph cluster_input_ports_group_outer { label=""; penwidth=0
-subgraph cluster_input_ports_group_inner { label=""; penwidth=0
-node[shape=circle style="rounded,filled" fillcolor="#FFFFFF" peripheries=1 fontname=Helvetica width=0.2]
-DATASET_LOC_input_port [label=""]
-zip_code_db_input_port [label=""]
-farmers_market_input_port [label=""]
-}}
-subgraph cluster_output_ports_group_outer { label=""; penwidth=0
-subgraph cluster_output_ports_group_inner { label=""; penwidth=0
-node[shape=circle style="rounded,filled" fillcolor="#FFFFFF" peripheries=1 fontname=Helvetica width=0.2]
-}}
-DATASET_LOC_input_port -> DATASET_LOC
-zip_code_db_input_port -> zip_code_db
-farmers_market_input_port -> farmers_market
+
+/* End of top-level graph */
 }

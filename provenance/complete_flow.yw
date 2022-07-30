@@ -1,0 +1,46 @@
+# @begin farmer_data_cleaning @desc Summary of data cleaning steps for farmers market
+# @IN farmers_market @URI file:{DATASET_LOC}/input/farmers_markets.csv
+# @OUT database_export @URI file:{DATASET_LOC}/../database/farmers_market.db
+
+# @BEGIN load_farmers @desc load farmers to Openrefine
+# @PARAM DATASET_LOC
+# @IN g @AS farmers_market @uri file:{DATASET_LOC}/input/farmers_markets.csv
+# @OUT openrefined_data
+# @END load_farmers
+
+
+
+# @BEGIN cleaning_date_time @desc Look at the workflow separately attached in appendix of the report
+# @IN openrefined_data
+# @OUT cleaned_simple_date
+# @OUT cleaned_complex_date
+# @OUT cleaned_time
+# @END cleaning_date_time
+
+
+# @BEGIN address_geo_cleaning @desc Address Geo cleaning
+# @IN openrefined_data
+# @OUT fm_subset_joined  @AS result_farmers_market
+# @END address_geo_cleaning
+
+# @BEGIN export_db
+# @PARAM DATASET_LOC
+# @IN cleaned_simple_date @AS cleaned_simple_date
+# @IN cleaned_complex_date @AS cleaned_complex_date
+# @IN cleaned_time @AS cleaned_time
+# @IN result_farmers_market @AS result_farmers_market
+# @OUT database_export @URI file:{DATASET_LOC}/../database/farmers_market.db
+# @END export_db
+
+# @BEGIN Visualize_tableau @desc generating data dashboards
+# @IN result_farmers_market
+# @IN cleaned_simple_date
+# @IN cleaned_complex_date
+# @IN cleaned_time
+
+# @END Visualize_tableau
+
+
+
+
+# @end farmer_data_cleaning
