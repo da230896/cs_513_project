@@ -3,7 +3,11 @@
   <component name="ChangeListManager">
     <list default="true" id="d2d76a7f-d3a1-4f47-8e22-719a63dffe76" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/farmer_market_db_dml.sql" beforeDir="false" afterPath="$PROJECT_DIR$/database/farmer_market_db_dml.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/farmers_market.db" beforeDir="false" afterPath="$PROJECT_DIR$/database/farmers_market.db" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dataset/fm_0716.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dataset/output/farmers_market.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dataset/output/fm_0716.csv" beforeDir="false" afterPath="$PROJECT_DIR$/dataset/output/fm_0716.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/address_geo_cleaning.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/src/address_geo_cleaning.ipynb" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -30,6 +34,7 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="SWAP_SIDES_IN_COMPARE_BRANCHES" value="true" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -80,7 +85,7 @@
       <updated>1656766822061</updated>
       <workItem from="1656766823212" duration="15921000" />
       <workItem from="1657977826816" duration="39932000" />
-      <workItem from="1658628548842" duration="26849000" />
+      <workItem from="1658628548842" duration="42275000" />
     </task>
     <servers />
   </component>
