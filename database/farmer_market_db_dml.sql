@@ -1,7 +1,7 @@
 --*** Database normalization- Begin ***--
 -- Populate cities values from raw records
 INSERT INTO City
-SELECT DISTINCT city, State, County, zip
+SELECT DISTINCT city, State, County
 FROM farmers_market;
 
 -- Cleanup if any city missing records
@@ -26,12 +26,16 @@ SET city_id = (
     WHERE cn.city = city.city
 );
 
+alter table farmers_market
+    add city_id integer;
+
 UPDATE farmers_market
 SET city_id = (
     SELECT city_id
     FROM city
     WHERE city.city = farmers_market.city
 );
+--8,636 rows affected in 1 s 418 ms
 
 -- populate city id for lineage
 UPDATE City
