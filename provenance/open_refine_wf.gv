@@ -1,0 +1,133 @@
+
+/* Start of top-level graph */
+digraph Workflow {
+rankdir=TB
+
+/* Title for graph */
+fontname=Helvetica; fontsize=18; labelloc=t
+label=Open_Refine_cleaning
+
+/* Start of double cluster for drawing box around nodes in workflow */
+subgraph cluster_workflow_box_outer { label=""; color=black; penwidth=2
+subgraph cluster_workflow_box_inner { label=""; penwidth=0
+
+/* Style for nodes representing atomic programs in workflow */
+node[shape=box style=filled fillcolor="#CCFFCC" peripheries=1 fontname=Helvetica]
+
+/* Nodes representing atomic programs in workflow */
+"core/text-transform0#" [shape=record rankdir=LR label="{<f0> "core/text-transform0#" |<f1> Text transform on cells in column zip using expression value.toNumber()}"];
+"core/text-transform1#" [shape=record rankdir=LR label="{<f0> "core/text-transform1#" |<f1> Text transform on cells in column Season1Date using expression value.toDate()}"];
+"core/mass-edit0#" [shape=record rankdir=LR label="{<f0> "core/mass-edit0#" |<f1> Mass edit cells in column Season1Date}"];
+"core/text-transform2#" [shape=record rankdir=LR label="{<f0> "core/text-transform2#" |<f1> Text transform on cells in column Season1Time using expression value.toDate()}"];
+"core/text-transform3#" [shape=record rankdir=LR label="{<f0> "core/text-transform3#" |<f1> Text transform on cells in column updateTime using expression value.toDate()}"];
+"core/text-transform4#" [shape=record rankdir=LR label="{<f0> "core/text-transform4#" |<f1> Text transform on cells in column updateTime using expression value.toDate()}"];
+"core/text-transform5#" [shape=record rankdir=LR label="{<f0> "core/text-transform5#" |<f1> Text transform on cells in column Facebook using expression jython\:return value if value and len(value)>4 and value[0\:4] =='http' else null}"];
+"core/text-transform6#" [shape=record rankdir=LR label="{<f0> "core/text-transform6#" |<f1> Text transform on cells in column Facebook using expression jython\:return value if value and len(value)>4 and value[0\:4] =='http' else null}"];
+"core/text-transform7#" [shape=record rankdir=LR label="{<f0> "core/text-transform7#" |<f1> Text transform on cells in column Twitter using expression jython\:return value if value and len(value)>4 and value[0\:4] =='http' else ''}"];
+"core/text-transform8#" [shape=record rankdir=LR label="{<f0> "core/text-transform8#" |<f1> Text transform on cells in column Facebook using expression jython\:return value if value and len(value)>4 and value[0\:4] =='http' else ''}"];
+"core/text-transform9#" [shape=record rankdir=LR label="{<f0> "core/text-transform9#" |<f1> Text transform on cells in column Website using expression jython\:return value if value and len(value)>4 and value[0\:4] =='http' else ''}"];
+"core/text-transform10#" [shape=record rankdir=LR label="{<f0> "core/text-transform10#" |<f1> Text transform on cells in column MarketName using expression jython\:return ''.join(ch for ch in value if ch.isalnum() or ch==' ')}"];
+"core/text-transform11#" [shape=record rankdir=LR label="{<f0> "core/text-transform11#" |<f1> Text transform on cells in column MarketName using expression value.trim()}"];
+"core/text-transform12#" [shape=record rankdir=LR label="{<f0> "core/text-transform12#" |<f1> Text transform on cells in column OtherMedia using expression jython\:return value if value and len(value)>4 and value[0\:4] =='http' else ''}"];
+
+/* Style for nodes representing non-parameter data channels in workflow */
+node[shape=box style="rounded,filled" fillcolor="#FFFFCC" peripheries=1 fontname=Helvetica]
+
+/* Nodes for non-parameter data channels in workflow */
+table0
+table1
+table2
+table3
+table4
+table5
+table6
+table7
+table8
+table9
+table10
+table11
+table12
+table13
+
+/* Style for nodes representing parameter channels in workflow */
+node[shape=box style="rounded,filled" fillcolor="#FCFCFC" peripheries=1 fontname=Helvetica]
+
+/* Nodes representing parameter channels in workflow */
+"col-name:zip"
+"expression:value.toNumber()"
+"col-name:Season1Date"
+"expression:value.toDate()"
+"col-name:Season1Time"
+"col-name:updateTime"
+"col-name:Facebook"
+"expression:jython:return_value_if_value_and_len(value)>4_and_value[0:4]_=='http'_else_null"
+"col-name:Twitter"
+"expression:jython:return_value_if_value_and_len(value)>4_and_value[0:4]_=='http'_else_''"
+"col-name:Website"
+"col-name:MarketName"
+"expression:jython:return_''.join(ch_for_ch_in_value_if_ch.isalnum()_or_ch=='_')"
+"expression:value.trim()"
+"col-name:OtherMedia"
+
+/* Edges representing connections between programs and channels */
+"core/text-transform0#" -> table1
+"col-name:zip" -> "core/text-transform0#"
+"expression:value.toNumber()" -> "core/text-transform0#"
+table0 -> "core/text-transform0#"
+"core/text-transform1#" -> table2
+"col-name:Season1Date" -> "core/text-transform1#"
+"expression:value.toDate()" -> "core/text-transform1#"
+table1 -> "core/text-transform1#"
+"core/mass-edit0#" -> table3
+"col-name:Season1Date" -> "core/mass-edit0#"
+table2 -> "core/mass-edit0#"
+"core/text-transform2#" -> table4
+"col-name:Season1Time" -> "core/text-transform2#"
+"expression:value.toDate()" -> "core/text-transform2#"
+table3 -> "core/text-transform2#"
+"core/text-transform3#" -> table5
+"col-name:updateTime" -> "core/text-transform3#"
+"expression:value.toDate()" -> "core/text-transform3#"
+table4 -> "core/text-transform3#"
+"core/text-transform4#" -> table6
+"col-name:updateTime" -> "core/text-transform4#"
+"expression:value.toDate()" -> "core/text-transform4#"
+table5 -> "core/text-transform4#"
+"core/text-transform5#" -> table7
+"col-name:Facebook" -> "core/text-transform5#"
+"expression:jython:return_value_if_value_and_len(value)>4_and_value[0:4]_=='http'_else_null" -> "core/text-transform5#"
+table6 -> "core/text-transform5#"
+"core/text-transform6#" -> table8
+"col-name:Facebook" -> "core/text-transform6#"
+"expression:jython:return_value_if_value_and_len(value)>4_and_value[0:4]_=='http'_else_null" -> "core/text-transform6#"
+table7 -> "core/text-transform6#"
+"core/text-transform7#" -> table9
+"col-name:Twitter" -> "core/text-transform7#"
+"expression:jython:return_value_if_value_and_len(value)>4_and_value[0:4]_=='http'_else_''" -> "core/text-transform7#"
+table8 -> "core/text-transform7#"
+"core/text-transform8#" -> table10
+"col-name:Facebook" -> "core/text-transform8#"
+"expression:jython:return_value_if_value_and_len(value)>4_and_value[0:4]_=='http'_else_''" -> "core/text-transform8#"
+table9 -> "core/text-transform8#"
+"core/text-transform9#" -> table11
+"col-name:Website" -> "core/text-transform9#"
+"expression:jython:return_value_if_value_and_len(value)>4_and_value[0:4]_=='http'_else_''" -> "core/text-transform9#"
+table10 -> "core/text-transform9#"
+"core/text-transform10#" -> table12
+"col-name:MarketName" -> "core/text-transform10#"
+"expression:jython:return_''.join(ch_for_ch_in_value_if_ch.isalnum()_or_ch=='_')" -> "core/text-transform10#"
+table11 -> "core/text-transform10#"
+"core/text-transform11#" -> table13
+"col-name:MarketName" -> "core/text-transform11#"
+"expression:value.trim()" -> "core/text-transform11#"
+table12 -> "core/text-transform11#"
+"core/text-transform12#" -> table14
+"col-name:OtherMedia" -> "core/text-transform12#"
+"expression:jython:return_value_if_value_and_len(value)>4_and_value[0:4]_=='http'_else_''" -> "core/text-transform12#"
+table13 -> "core/text-transform12#"
+
+/* End of double cluster for drawing box around nodes in workflow */
+}}
+
+/* End of top-level graph */
+}
