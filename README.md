@@ -21,3 +21,11 @@
     
      java -jar provenance/yw.jar graph src/farmers_data_exploration_rahul.py >provenance/u0_u1.2.gv
      cat provenance/u0_u1.2.gv | dot -Tpng -o provenance/u0_u1.2.png
+
+## Steps to generate database dump
+    
+    cd <project root>
+    sqlite3 database/farmers_market.db
+     .output dataset/output/farmers_market_db.dump
+     .dump
+     .exit
