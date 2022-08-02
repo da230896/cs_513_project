@@ -1,4 +1,4 @@
-# Farmers Market Analysis
+# Farmers Markets Analysis
 ## CS513: Theory & Practice of Data Cleaning
 
 ## Directory Structure
