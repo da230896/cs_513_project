@@ -2,7 +2,7 @@
 -- Populate cities values from raw records
 INSERT INTO City
 SELECT DISTINCT city, State, County
-FROM farmers_market;
+FROM farmers_market_raw;
 
 -- Cleanup if any city missing records
 -- we found total 32 invalid records in database
@@ -11,7 +11,7 @@ from City
 WHERE city IS NULL
    OR city = '-';
 DELETE
-from farmers_market
+from farmers_market_raw
 WHERE city IS NULL
    OR city = '-';
 --32 rows affected in 8 ms
@@ -28,6 +28,9 @@ SET city_id = (
 
 alter table farmers_market
     add city_id integer;
+
+
+ALTER TABLE city drop column state;
 
 UPDATE farmers_market
 SET city_id = (
