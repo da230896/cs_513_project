@@ -1,4 +1,4 @@
-#@begin Linear_OR #@desc Linear OpenRefine Workflow
+#@begin Open_Refine_cleaning #@desc Linear OpenRefine Workflow
 #@param expression:value.toDate()
 #@param col-name:Season1Time
 #@param col-name:Season1Date
@@ -99,4 +99,4 @@
 #@in table13
 #@out table14
 #@end core/text-transform12
-#@end Linear_OR
+#@end Open_Refine_cleaning
